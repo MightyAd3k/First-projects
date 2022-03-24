@@ -5,7 +5,7 @@ print('Guess the number.\nChoose one from 1 - 100')
 
 def check_input():
     """
-    Check if number provided by user is correct type and if is in within the range.
+    Check if number provided by user has correct type and if is in within the range.
 
     :rtype : int
     :return checked number:
