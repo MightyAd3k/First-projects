@@ -22,5 +22,20 @@ def check_input():
         return user_number
 
 
+def list_of_numbers():
+    """
+        Add all numbers typed by user to the list.
+
+    :return: list of user's numbers
+    """
+    typed_numbers = []
+
+    while len(typed_numbers) < 6:
+        typed_number = check_input()
+        if typed_number not in typed_numbers:
+            typed_numbers.append(typed_number)
+    print(typed_numbers)
+
+
 if __name__ == '__main__':
-    check_input()
+    list_of_numbers()
