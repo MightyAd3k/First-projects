@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guesser</title>
+</head>
+<body>
+<form action="/" method="post">
+    <input type="hidden" name="min">
+    <input type="hidden" name="max">
+
+    <p>{{ number }}</p>
+    <br>
+    <button type="submit" name="to-small">To small</button>
+    <button type="submit" name="to-big">To big</button>
+    <button type="submit" name="guessed">You guessed</button>
+
+</form>
+</body>
+</html>
