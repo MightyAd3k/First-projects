@@ -1,3 +1,5 @@
+from random import randint
+
 print('Enter your 6 lucky numbers')
 
 
@@ -34,8 +36,29 @@ def list_of_numbers():
         typed_number = check_input()
         if typed_number not in typed_numbers:
             typed_numbers.append(typed_number)
-    print(typed_numbers)
+
+    return typed_numbers
+
+
+def draw():
+    """Main function of this program."""
+
+    winning_numbers = []
+    user_types = list_of_numbers()
+
+    while len(winning_numbers) < 6:
+        num = randint(1, 49)
+        winning_numbers.append(num)
+
+    hits = 0
+    for i in user_types:
+        if i in winning_numbers:
+            hits += 1
+
+    print(f'\nWinning numbers are: {winning_numbers}')
+    print(f"User's lucky numbers: {user_types}")
+    print(f'\nDear user, you have hit {hits} ' + ('numbers' if hits > 1 or hits == 0 else 'number'))
 
 
 if __name__ == '__main__':
-    list_of_numbers()
+    draw()
