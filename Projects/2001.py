@@ -1,3 +1,5 @@
+from random import randint, choice
+
 DICES = (
     'D3',
     'D4',
@@ -27,15 +29,54 @@ def check_input():
         return int(user_input[1:])
 
 
-def points():
-    throw_result = 0
-    points = 0
+def user_throw():
+    user_dice1 = check_input()
+    user_dice2 = check_input()
+    user_result = randint(0, user_dice1) + randint(0, user_dice2)
+    return user_result
+
+
+def computer_throw():
+    computer_dice = int(choice(DICES)[1:])
+    computer_dice1 = int(choice(DICES)[1:])
+    computer_result = randint(0, computer_dice) + randint(0, computer_dice1)
+    return computer_result
+
+
+def user_points(points):
+    throw_result = user_throw()
     if throw_result == 7:
         points //= 7
     elif throw_result == 11:
         points *= 11
+    else:
+        points += throw_result
     return points
 
 
+def computer_points(points):
+    throw_result = computer_throw()
+    if throw_result == 7:
+        points //= 7
+    elif throw_result == 11:
+        points *= 11
+    else:
+        points += throw_result
+    return points
+
+
+def game():
+    points_user = 0
+    points_computer = 0
+
+    points_user += user_throw()
+    points_computer += computer_throw()
+
+    while points_user or points_computer < 2001:
+        print(f'User points: {points_user} | Computer points: {points_computer}')
+        points_user += user_points(points_user)
+        points_computer += computer_points(points_computer)
+
+
 if __name__ == '__main__':
-    check_input()
+    game()
