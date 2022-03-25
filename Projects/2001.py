@@ -72,10 +72,18 @@ def game():
     points_user += user_throw()
     points_computer += computer_throw()
 
-    while points_user or points_computer < 2001:
+    while points_user < 2001 and points_computer < 2001:
         print(f'User points: {points_user} | Computer points: {points_computer}')
         points_user += user_points(points_user)
         points_computer += computer_points(points_computer)
+
+    print(f'User points: {points_user} | Computer points: {points_computer}')
+    if points_user > points_computer:
+        print('You win')
+    elif points_user < points_computer:
+        print('Computer win')
+    else:
+        print('Tie')
 
 
 if __name__ == '__main__':
