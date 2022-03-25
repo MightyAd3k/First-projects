@@ -27,7 +27,14 @@ def check_input():
         return int(user_input[1:])
 
 
-
+def points():
+    throw_result = 0
+    points = 0
+    if throw_result == 7:
+        points //= 7
+    elif throw_result == 11:
+        points *= 11
+    return points
 
 
 if __name__ == '__main__':
