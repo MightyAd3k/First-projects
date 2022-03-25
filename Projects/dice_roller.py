@@ -1,3 +1,5 @@
+from random import randint
+
 DICES = (
     'D3',
     'D4',
@@ -9,31 +11,38 @@ DICES = (
     'D100'
 )
 
-print('Choose your dice')
-print(DICES)
 
+def dice_roller(dice_code):
+    """Simple dice roller"""
 
-def input_validator():
-    """
-    Check if user picked correct dice.
+    for dice in DICES:
+        if dice in dice_code:
+            dices, points = dice_code.split(dice)
+            try:
+                dice = int(dice[1:])
+            except ValueError:
+                return 'Wrong input'
+            break
+    else:
+        return 'Wrong input'
 
-    :rtype: str
-    :return: checked dice
-    """
+    try:
+        dices = int(dices) if dices else 1
+    except ValueError:
+        return 'Wrong input'
 
-    while True:
-        try:
-            user_choice = input()
-        except (TypeError, ValueError):
-            print("What's that?")
-            continue
+    try:
+        points = int(points) if points else 0
+    except ValueError:
+        return 'Wrong input'
 
-        if user_choice not in DICES:
-            print('Pick dice from the list')
-            continue
-
-        return user_choice
+    return sum([randint(0, dice) for _ in range(dices)]) + points
 
 
 if __name__ == '__main__':
-    input_validator()
+    print(dice_roller("2D10+10"))
+    print(dice_roller("D6"))
+    print(dice_roller("2D3"))
+    print(dice_roller("D12-1"))
+    print(dice_roller("DD34"))
+    print(dice_roller("4-3D6"))
